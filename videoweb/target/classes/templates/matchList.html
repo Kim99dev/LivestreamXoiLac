@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Match List</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>Match List Today</h1>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>League</th>
+    <th>Time</th>
+    <th>Home Team</th>
+    <th>Home Logo</th>
+    <th>Away Team</th>
+    <th>Away Logo</th>
+    <th>URL</th>
+    <th>Livestream</th>
+    <th>Chat</th>
+
+
+
+
+  </tr>
+  <tr th:each="match : ${matches}">
+    <td th:text="${match.id}"></td>
+    <td th:text="${match.league}"></td>
+    <td th:text="${match.time}"></td>
+    <td th:text="${match.homeTeam}"></td>
+    <td><img th:src="${match.homeLogo}" height="100px" width="100xp"></td>
+    <td th:text="${match.awayTeam}"></td>
+    <td><img th:src="${match.awayLogo}" height="100px" width="100xp"> </td>
+    <td><a th:href="${match.url}" th:text="${match.url}"></a></td>
+    <td>
+      <iframe th:src="${match.linkLivestream}" width="640" height="360"></iframe>
+    </td>
+    <td>
+      <iframe th:src="${match.linkchat}" width="640" height="360"></iframe>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
